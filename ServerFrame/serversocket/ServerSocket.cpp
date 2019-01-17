@@ -5,17 +5,24 @@
 #include "ServerSocket.h"
 
 // 运送socket
-int ServerSocket::RunServerSocket(SocketConfig* param)
+int ServerSocket::RunServerSocket(ServerBase* server, SocketConfig* param)
 {
+	if (nullptr == server || nullptr == param)
+	{
+		return -1;
+	}
+
+	m_stServer = server;
 	m_stThread = std::thread(&ServerSocket::ThreadServerSocket, this, param);
 	m_stThread.detach();
+	return 0;
 }
 
 // socket线程
 void ServerSocket::ThreadServerSocket(SocketConfig* param)
 {
 	SOCKET temp = InitSocket(param->sIp.c_str(), param->nPort);
-
+	StartSocket(temp);
 	return;
 }
 
@@ -55,11 +62,16 @@ SOCKET ServerSocket::InitSocket(const char* sIP, int nPort)
 }
 
 // 开始socket
-bool ServerSocket::StartSocket(SOCKET& socket)
+bool ServerSocket::StartSocket(SOCKET socket)
 {
 	WSAEVENT temp = WSACreateEvent();
 	BOOL_CHECK_NULL(temp);
-	
-	WSAEventSelect(socket, temp, 1);
 
+	WSAEventSelect(socket, temp, FD_ACCEPT);
+	while (true)
+	{
+
+	}
+
+	return true;
 }

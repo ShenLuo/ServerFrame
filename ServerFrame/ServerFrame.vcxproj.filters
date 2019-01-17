@@ -19,6 +19,12 @@
     <Filter Include="ServerCommon">
       <UniqueIdentifier>{c7eac643-80b7-4d1c-a41e-6afe61d4cb9b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ServerLogic">
+      <UniqueIdentifier>{9b7e2bf7-f692-47c3-81f1-852742aaf317}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ServerBase">
+      <UniqueIdentifier>{aa79974c-f794-4713-895b-fdbef65300be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -39,6 +45,12 @@
     <ClInclude Include="ServerCommon\ServerCommon.h">
       <Filter>ServerCommon</Filter>
     </ClInclude>
+    <ClInclude Include="ServerBase\ServerBase.h">
+      <Filter>ServerBase</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerLogic\ServerLogic.h">
+      <Filter>ServerLogic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -52,6 +64,12 @@
     </ClCompile>
     <ClCompile Include="ServerCommon\ServerCommon.cpp">
       <Filter>ServerCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerBase\ServerBase.cpp">
+      <Filter>ServerBase</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerLogic\ServerLogic.cpp">
+      <Filter>ServerLogic</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

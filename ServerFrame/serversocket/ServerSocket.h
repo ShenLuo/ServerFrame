@@ -8,6 +8,7 @@
 #include <WinSock2.h>
 #include <thread>
 #include "ServerSocketDefine.h"
+#include "../ServerBase/ServerBase.h"
 
 class ServerSocket
 {
@@ -16,7 +17,7 @@ public:
 	~ServerSocket(){}
 
 	// 运行socket
-	int RunServerSocket(SocketConfig* param);
+	int RunServerSocket(ServerBase* server, SocketConfig* param);
 
 private:
 
@@ -27,11 +28,14 @@ private:
 	SOCKET InitSocket(const char* sIP, int nPort);
 
 	// 开始socket
-	bool StartSocket(SOCKET& socket);
+	bool StartSocket(SOCKET socket);
 
 private:
 	// socket线程
 	std::thread m_stThread;
+
+	// 所属服务器
+	ServerBase* m_stServer;
 };
 
 #endif // _SERVER_SOCKET_H_
